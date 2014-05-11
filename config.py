@@ -1,0 +1,6 @@
+
+WIDTH, HEIGHT = 320,240
+
+TICKHZ = 60
+
+SHOWFPS = True
