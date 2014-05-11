@@ -57,9 +57,13 @@ while running:
 	#if FPS is on, render it
 	if SHOWFPS:
 		fps = clock.get_fps()
-		try:
-			if math.isinf(fps):
-				fps = 10000.0
-			screen.blit(font.render("%0.1f" % fps, False, (255,255,255),  (0,0,0)), (200,200))
-		except: pass
+		if math.isinf(fps):
+			fps = 10000.0
+
+                screen_rect = screen.get_rect()
+                fps_surf = font.render("%0.1f" % fps, False, (255,255,255))
+                fps_rect = fps_surf.get_rect()
+                fps_rect.topright = screen_rect.move(-5, 5).topright
+                screen.blit(fps_surf, fps_rect)
+                
 	pygame.display.update()
